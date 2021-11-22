@@ -6,6 +6,9 @@
 .form-input {
   @apply block w-full px-1 py-2 rounded-lg my-1 bg-gray-900 text-gray-50;
 }
+.form-btn {
+  @apply bg-blue-700 hover:bg-blue-800 transition duration-300 w-full text-center py-2 my-4 rounded-lg font-semibold;
+}
 .desk-nav {
   @apply hover:bg-gray-900 py-1.5 px-3 rounded-lg transition duration-200;
 }
