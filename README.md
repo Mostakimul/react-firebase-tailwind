@@ -39,32 +39,64 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### `yarn pre-dev`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+It will install following packages
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> axios, react-router-dom, react-hook-form, react-loader-spinner
 
-### Code Splitting
+### `yarn set-tail`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+It will install necessary packages for tailwind.
 
-### Analyzing the Bundle Size
+1. After Installing swap the scripts:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```diff
+-"start": "react-scripts start",
+-"build": "react-scripts build",
+-"test": "react-scripts test",
 
-### Making a Progressive Web App
++"start": "craco start",
++"build": "craco build",
++"test": "craco test",
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+2. Create a `craco.config.js` in the project root and paste the below code.
 
-### Advanced Configuration
+```
+module.exports = {
+  style: {
+    postcss: {
+      plugins: [
+        require('tailwindcss'),
+        require('autoprefixer'),
+      ],
+    },
+  },
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+3. Configure `tailwind.config.js` file
 
-### Deployment
+```diff
+module.exports = {
+- purge: [],
++purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+darkMode: false, // or 'media' or 'class'
+theme: {
+  extend: {},
+},
+variants: {
+  extend: {},
+},
+plugins: [],
+  }
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+4. Insert the following code into `index.js` file.
 
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
