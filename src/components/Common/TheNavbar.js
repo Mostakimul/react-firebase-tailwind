@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const TheNavbar = () => {
+  // imoporting user
+  const { user } = useAuth();
   const [isNavShowing, setIsNavShowing] = useState(false);
 
   const handleNav = () => {
@@ -71,16 +74,29 @@ const TheNavbar = () => {
           to="/">
           Home
         </NavLink>
-        <NavLink
-          className={({ isActive }) => (isActive ? 'mobile-nav-active' : 'mobile-nav')}
-          to="/login">
-          Sign in
-        </NavLink>
-        <NavLink
-          className={({ isActive }) => (isActive ? 'mobile-nav-active' : 'mobile-nav')}
-          to="/register">
-          Sign up
-        </NavLink>
+        {user?.email ? (
+          <>
+            <p className="bg-blue-800 hover:bg-blue-600 transition duration-300 py-1 px-2 rounded-lg mx-2">
+              {user?.displayName}
+            </p>
+            <button className="bg-red-800 hover:bg-red-600 transition duration-300 py-1 px-2 rounded-lg">
+              Sign out
+            </button>
+          </>
+        ) : (
+          <>
+            <NavLink
+              className={({ isActive }) => (isActive ? 'mobile-nav-active' : 'mobile-nav')}
+              to="/login">
+              Sign in
+            </NavLink>
+            <NavLink
+              className={({ isActive }) => (isActive ? 'mobile-nav-active' : 'mobile-nav')}
+              to="/register">
+              Sign up
+            </NavLink>
+          </>
+        )}
       </nav>
 
       {/* nav NavLink desktop */}
@@ -88,16 +104,29 @@ const TheNavbar = () => {
         <NavLink className={({ isActive }) => (isActive ? 'desk-nav-active' : 'desk-nav')} to="/">
           Home
         </NavLink>
-        <NavLink
-          className={({ isActive }) => (isActive ? 'desk-nav-active' : 'desk-nav')}
-          to="/login">
-          Sign in
-        </NavLink>
-        <NavLink
-          className={({ isActive }) => (isActive ? 'desk-nav-active' : 'desk-nav')}
-          to="/register">
-          Sign up
-        </NavLink>
+        {user?.email ? (
+          <>
+            <p className="bg-blue-800 hover:bg-blue-600 transition duration-300  py-1 px-2 rounded-lg">
+              {user?.displayName}
+            </p>
+            <button className="bg-red-800 hover:bg-red-600 transition duration-300 py-1 px-2 rounded-lg">
+              Sign out
+            </button>
+          </>
+        ) : (
+          <>
+            <NavLink
+              className={({ isActive }) => (isActive ? 'desk-nav-active' : 'desk-nav')}
+              to="/login">
+              Sign in
+            </NavLink>
+            <NavLink
+              className={({ isActive }) => (isActive ? 'desk-nav-active' : 'desk-nav')}
+              to="/register">
+              Sign up
+            </NavLink>
+          </>
+        )}
       </nav>
     </div>
   );
