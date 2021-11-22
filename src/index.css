@@ -2,3 +2,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.form-input {
+  @apply block w-full px-1 py-2 rounded-lg my-1 bg-gray-900 text-gray-50;
+}
+.desk-nav {
+  @apply hover:bg-gray-900 py-1.5 px-3 rounded-lg transition duration-200;
+}
+.desk-nav-active {
+  @apply bg-gray-900 hover:bg-gray-700 py-1.5 px-3 rounded-lg transition duration-200;
+}
+.mobile-nav {
+  @apply block hover:bg-gray-600 transition duration-300 bg-gray-700 mx-2 py-1.5 rounded-lg;
+}
+.mobile-nav-active {
+  @apply block hover:bg-gray-600 transition duration-300 bg-gray-900 mx-2 py-1.5 rounded-lg;
+}

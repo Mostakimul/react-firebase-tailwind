@@ -11,5 +11,7 @@
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
-  }
+  },
+  // tailwind
+  "css.lint.unknownAtRules": "ignore"
 }
