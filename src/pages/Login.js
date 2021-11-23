@@ -1,18 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Loader from 'react-loader-spinner';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import TheGoogleSignBtn from '../components/Common/TheGoogleSignBtn';
 import TheNavbar from '../components/Common/TheNavbar';
 import useAuth from '../hooks/useAuth';
 
 const Login = () => {
   // user from auth
-  const { loginUser, isLoading, authError } = useAuth();
-
-  // redirect
-  let navigate = useNavigate();
-  let location = useLocation();
+  const { loginUser, user, isLoading, authError } = useAuth();
 
   // react hook form
   const {
@@ -21,6 +17,15 @@ const Login = () => {
     reset,
     formState: { errors },
   } = useForm();
+
+  // redirect
+  let navigate = useNavigate();
+  let location = useLocation();
+
+  // redireact user if logged in
+  if (user?.email) {
+    return <Navigate to="/" state={{ from: location }} />;
+  }
 
   // subnitting register form
   const onSubmit = (data) => {

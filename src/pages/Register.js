@@ -2,12 +2,15 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
 import Loader from 'react-loader-spinner';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import TheGoogleSignBtn from '../components/Common/TheGoogleSignBtn';
 import TheNavbar from '../components/Common/TheNavbar';
 import useAuth from '../hooks/useAuth';
 
 const Register = () => {
+  // importing firebase auth
+  const { user, registerUser, isLoading, authError } = useAuth();
+
   // react hook form
   const {
     register,
@@ -15,25 +18,11 @@ const Register = () => {
     reset,
     formState: { errors },
   } = useForm();
-
-  // redirect
-  let navigate = useNavigate();
-  let location = useLocation();
-
-  // importing firebase auth
-  const { user, registerUser, isLoading, authError } = useAuth();
-
   // subnitting register form
   const onSubmit = (data) => {
     registerUser(data.email, data.password, data.name, navigate, location);
     reset({});
   };
-
-  useEffect(() => {
-    if (user?.email) {
-      notify();
-    }
-  }, [user]);
 
   // toast
   const notify = () =>
@@ -51,6 +40,21 @@ const Register = () => {
         secondary: '#fff',
       },
     });
+
+  useEffect(() => {
+    if (user?.email) {
+      notify();
+    }
+  }, [user]);
+
+  // redirect
+  let navigate = useNavigate();
+  let location = useLocation();
+
+  // redireact user if logged in
+  if (user?.email) {
+    return <Navigate to="/" state={{ from: location }} />;
+  }
 
   return (
     <div className="container">
