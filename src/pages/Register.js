@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import toast, { Toaster } from 'react-hot-toast';
 import Loader from 'react-loader-spinner';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import TheGoogleSignBtn from '../components/Common/TheGoogleSignBtn';
@@ -24,29 +23,6 @@ const Register = () => {
     reset({});
   };
 
-  // toast
-  const notify = () =>
-    toast.success('User created successfully!', {
-      duration: 4000,
-      position: 'top-center',
-      // Styling
-      style: {
-        background: '#202120',
-        color: '#F6F6F6',
-      },
-      // Change colors of success/error/loading icon
-      iconTheme: {
-        primary: '#09D60E',
-        secondary: '#fff',
-      },
-    });
-
-  useEffect(() => {
-    if (user?.email) {
-      notify();
-    }
-  }, [user]);
-
   // redirect
   let navigate = useNavigate();
   let location = useLocation();
@@ -60,8 +36,6 @@ const Register = () => {
     <div className="container">
       <TheNavbar />
       <section className="px-2 py-5">
-        {/* totast */}
-        <Toaster />
         <div className="bg-gray-800 md:w-2/5 mx-auto rounded-lg py-3">
           {/* loader */}
           {isLoading ? (
