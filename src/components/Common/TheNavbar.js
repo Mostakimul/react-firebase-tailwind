@@ -4,7 +4,7 @@ import useAuth from '../../hooks/useAuth';
 
 const TheNavbar = () => {
   // imoporting user
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
   const [isNavShowing, setIsNavShowing] = useState(false);
 
   const handleNav = () => {
@@ -79,7 +79,9 @@ const TheNavbar = () => {
             <p className="bg-blue-800 hover:bg-blue-600 transition duration-300 py-1 px-2 rounded-lg mx-2">
               {user?.displayName}
             </p>
-            <button className="bg-red-800 hover:bg-red-600 transition duration-300 py-1 px-2 rounded-lg">
+            <button
+              onClick={logOut}
+              className="bg-red-800 hover:bg-red-600 transition duration-300 py-1 px-2 rounded-lg">
               Sign out
             </button>
           </>
@@ -109,7 +111,9 @@ const TheNavbar = () => {
             <p className="bg-blue-800 hover:bg-blue-600 transition duration-300  py-1 px-2 rounded-lg">
               {user?.displayName}
             </p>
-            <button className="bg-red-800 hover:bg-red-600 transition duration-300 py-1 px-2 rounded-lg">
+            <button
+              onClick={logOut}
+              className="bg-red-800 hover:bg-red-600 transition duration-300 py-1 px-2 rounded-lg">
               Sign out
             </button>
           </>

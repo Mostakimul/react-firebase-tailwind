@@ -8,7 +8,7 @@ import useAuth from '../hooks/useAuth';
 
 const Login = () => {
   // user from auth
-  const { loginUser, user, isLoading, authError } = useAuth();
+  const { loginUser, isLoading, authError } = useAuth();
 
   // redirect
   let navigate = useNavigate();

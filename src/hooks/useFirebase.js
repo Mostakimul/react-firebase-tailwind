@@ -3,6 +3,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut,
   updateProfile,
 } from 'firebase/auth';
 import { useEffect, useState } from 'react';
@@ -68,6 +69,23 @@ const useFirebase = () => {
   };
 
   /**
+   * user logout
+   */
+  const logOut = () => {
+    setIsLoading(true);
+    signOut(auth)
+      .then(() => {
+        setUser({});
+      })
+      .catch((error) => {
+        setAuthError(error.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  /**
    * user observer
    */
   useEffect(() => {
@@ -90,6 +108,7 @@ const useFirebase = () => {
     authError,
     registerUser,
     loginUser,
+    logOut,
   };
 };
 
