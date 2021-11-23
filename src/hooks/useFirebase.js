@@ -1,8 +1,10 @@
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from 'firebase/auth';
@@ -17,6 +19,7 @@ const useFirebase = () => {
   const [authError, setAuthError] = useState('');
 
   const auth = getAuth();
+  const googleProvider = new GoogleAuthProvider();
 
   /**
    * register user with email and password
@@ -86,6 +89,21 @@ const useFirebase = () => {
   };
 
   /**
+   * Signin with google
+   */
+  const googleRegister = (navigate, location) => {
+    setIsLoading(true);
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {})
+      .catch((error) => {
+        setAuthError(error.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  /**
    * user observer
    */
   useEffect(() => {
@@ -109,6 +127,7 @@ const useFirebase = () => {
     registerUser,
     loginUser,
     logOut,
+    googleRegister,
   };
 };
 
