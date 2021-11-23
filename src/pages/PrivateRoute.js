@@ -1,6 +1,6 @@
 import React from 'react';
-import Loader from 'react-loader-spinner';
 import { Navigate, useLocation } from 'react-router';
+import TheSpinner from '../components/Common/TheSpinner';
 import useAuth from '../hooks/useAuth';
 
 const PrivateRoute = ({ children }) => {
@@ -9,11 +9,7 @@ const PrivateRoute = ({ children }) => {
 
   // setting loader
   if (isLoading) {
-    return (
-      <div className="flex justify-center">
-        <Loader type="Puff" color="#19752f" height={100} width={100} timeout={3000} />
-      </div>
-    );
+    return <TheSpinner />;
   }
 
   if (user?.email) {

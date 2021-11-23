@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import Loader from 'react-loader-spinner';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import TheGoogleSignBtn from '../components/Common/TheGoogleSignBtn';
 import TheNavbar from '../components/Common/TheNavbar';
+import TheSpinner from '../components/Common/TheSpinner';
 import useAuth from '../hooks/useAuth';
 
 const Register = () => {
@@ -41,9 +41,7 @@ const Register = () => {
         <div className="bg-gray-800 md:w-2/5 mx-auto rounded-lg py-3">
           {/* loader */}
           {isLoading ? (
-            <div className="flex justify-center">
-              <Loader type="Puff" color="#19752f" height={100} width={100} timeout={3000} />
-            </div>
+            <TheSpinner />
           ) : (
             <>
               <h2 className="text-center text-xl font-semibold mb-5">Create an Account</h2>
