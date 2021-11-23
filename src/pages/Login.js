@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Loader from 'react-loader-spinner';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import TheGoogleSignBtn from '../components/Common/TheGoogleSignBtn';
 import TheNavbar from '../components/Common/TheNavbar';
 import useAuth from '../hooks/useAuth';
@@ -22,9 +22,11 @@ const Login = () => {
   let navigate = useNavigate();
   let location = useLocation();
 
+  let from = location.state?.from?.pathname || '/';
+
   // redireact user if logged in
   if (user?.email) {
-    return <Navigate to="/" state={{ from: location }} />;
+    navigate(from, { replace: true });
   }
 
   // subnitting register form

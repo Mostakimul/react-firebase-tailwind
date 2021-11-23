@@ -41,7 +41,7 @@ const useFirebase = () => {
           .catch(() => {});
 
         // redirect user
-        const destination = location?.state?.from || '/';
+        const destination = location?.state?.from?.pathname || '/';
         navigate(destination, { replace: true });
       })
       .catch((error) => {
@@ -55,12 +55,12 @@ const useFirebase = () => {
   /**
    * login user with email and password
    */
-  const loginUser = (email, password, nevigate, location) => {
+  const loginUser = (email, password, navigate, location) => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        const destinantion = location?.state?.from || '/';
-        nevigate(destinantion, { replace: true });
+        const destinantion = location?.state?.from?.pathname || '/';
+        navigate(destinantion, { replace: true });
         setAuthError('');
       })
       .catch((error) => {
@@ -94,7 +94,11 @@ const useFirebase = () => {
   const googleRegister = (navigate, location) => {
     setIsLoading(true);
     signInWithPopup(auth, googleProvider)
-      .then((result) => {})
+      .then((result) => {
+        const destinantion = location?.state?.from?.pathname || '/';
+        navigate(destinantion, { replace: true });
+        setAuthError('');
+      })
       .catch((error) => {
         setAuthError(error.message);
       })

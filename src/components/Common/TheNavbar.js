@@ -76,6 +76,11 @@ const TheNavbar = () => {
         </NavLink>
         {user?.email ? (
           <>
+            <NavLink
+              className={({ isActive }) => (isActive ? 'mobile-nav-active' : 'mobile-nav')}
+              to="/admin-dashboard">
+              Dashboard
+            </NavLink>
             <p className="bg-blue-800 hover:bg-blue-600 transition duration-300 py-1 px-2 rounded-lg mx-2">
               {user?.displayName}
             </p>
@@ -108,6 +113,11 @@ const TheNavbar = () => {
         </NavLink>
         {user?.email ? (
           <>
+            <NavLink
+              className={({ isActive }) => (isActive ? 'desk-nav-active' : 'desk-nav')}
+              to="/admin-dashboard">
+              Dashboard
+            </NavLink>
             <p className="bg-blue-800 hover:bg-blue-600 transition duration-300  py-1 px-2 rounded-lg">
               {user?.displayName}
             </p>
