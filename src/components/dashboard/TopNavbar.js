@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const TopNavbar = () => {
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
 
   return (
     <div className="flex bg-gray-800 justify-between items-center p-2 mt-2 rounded-lg">
@@ -20,7 +20,9 @@ const TopNavbar = () => {
           className="bg-blue-800 hover:bg-blue-600 transition duration-300 py-1 px-2 rounded-lg">
           {user.displayName}
         </NavLink>
-        <button className="bg-red-800 hover:bg-red-600 transition duration-300 py-1 px-2 rounded-lg shadow-lg">
+        <button
+          onClick={logOut}
+          className="bg-red-800 hover:bg-red-600 transition duration-300 py-1 px-2 rounded-lg shadow-lg">
           Sign out
         </button>
       </div>
