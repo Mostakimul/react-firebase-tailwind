@@ -5,6 +5,7 @@ import useAuth from '../../hooks/useAuth';
 const TheNavbar = () => {
   // imoporting user
   const { user, logOut } = useAuth();
+  // handling navigation
   const [isNavShowing, setIsNavShowing] = useState(false);
 
   const handleNav = () => {

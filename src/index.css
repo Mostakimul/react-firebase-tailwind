@@ -27,3 +27,6 @@
 .dash-content {
   @apply mt-5 bg-gray-700 p-5 rounded-lg shadow-lg;
 }
+.dash-mb-side {
+  @apply block bg-gray-900 hover:bg-gray-700  px-3 py-2 mx-2 rounded-lg shadow-lg text-gray-50 transition duration-300;
+}
