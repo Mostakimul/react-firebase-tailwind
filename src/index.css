@@ -21,3 +21,9 @@
 .mobile-nav-active {
   @apply block hover:bg-gray-600 transition duration-300 bg-gray-900 mx-2 py-1.5 rounded-lg;
 }
+.dash-side-nav {
+  @apply block bg-gray-900 hover:bg-gray-700  px-5 py-3 rounded-lg shadow-lg text-gray-50 transition duration-300;
+}
+.dash-content {
+  @apply mt-5 bg-gray-700 p-5 rounded-lg shadow-lg;
+}
