@@ -3,7 +3,7 @@ import React from 'react';
 const AllUsers = () => {
   return (
     <div>
-      <h2>All users</h2>
+      <h2 className="text-center">All users</h2>
     </div>
   );
 };

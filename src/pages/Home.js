@@ -9,7 +9,7 @@ const Home = () => {
         <TheNavbar />
       </div>
       <div className="container">
-        <h3>Hello From Home</h3>
+        <h3 className="text-center py-2 text-xl">Hello From Home</h3>
       </div>
     </div>
   );

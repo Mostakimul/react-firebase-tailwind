@@ -3,7 +3,7 @@ import React from 'react';
 const AllOrders = () => {
   return (
     <div>
-      <h2>All Orders</h2>
+      <h2 className="text-center">All Orders</h2>
     </div>
   );
 };
