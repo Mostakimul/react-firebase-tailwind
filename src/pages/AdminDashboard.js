@@ -33,6 +33,9 @@ const AdminDashboard = () => {
           <NavLink to="/dashboard" className="dash-side-nav">
             Dashboard
           </NavLink>
+          <NavLink to="/dashboard/profile" className="dash-side-nav">
+            Profile
+          </NavLink>
           <NavLink to="/dashboard/all-users" className="dash-side-nav">
             Users
           </NavLink>
@@ -49,6 +52,9 @@ const AdminDashboard = () => {
         }`}>
         <NavLink className="dash-mb-side" to="/dashboard">
           Dashboard
+        </NavLink>
+        <NavLink className="dash-mb-side" to="/dashboard/profile">
+          Profile
         </NavLink>
         {user?.email ? (
           <>

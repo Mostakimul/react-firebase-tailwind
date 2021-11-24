@@ -4,6 +4,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import AllOrders from './pages/AdminPages/AllOrders';
 import AllUsers from './pages/AdminPages/AllUsers';
 import Dashboard from './pages/AdminPages/Dashboard';
+import Profile from './pages/AdminPages/Profile';
 import Error from './pages/Error';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -28,6 +29,7 @@ function App() {
             }>
             {/* nested routes */}
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/profile" element={<Profile />} />
             <Route path="/dashboard/all-users" element={<AllUsers />} />
             <Route path="/dashboard/all-orders" element={<AllOrders />} />
           </Route>
