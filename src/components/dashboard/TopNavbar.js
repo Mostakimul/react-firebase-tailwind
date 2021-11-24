@@ -10,7 +10,7 @@ const TopNavbar = ({ handleNav, isNavShowing }) => {
     <div className="flex bg-gray-800 justify-between items-center p-2 mt-2 rounded-lg">
       {/* Logo */}
       <div>
-        <NavLink to="/admin-dashboard" className="text-lg font-semibold font-jos">
+        <NavLink to="/" className="text-lg font-semibold font-jos">
           MK LOGO
         </NavLink>
       </div>
