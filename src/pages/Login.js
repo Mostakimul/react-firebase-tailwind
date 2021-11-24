@@ -86,12 +86,18 @@ const Login = () => {
           )}
         </div>
         {/* Already */}
-        <div>
-          <p className="text-center py-5">
+        <div className="py-5">
+          <p className="text-center">
             Don't have an account?{' '}
             <Link to="/register" className="text-blue-300">
               register here
             </Link>
+          </p>
+          <p className="text-center">
+            Forgot your password?{' '}
+            <Link to="/reset-password" className="text-blue-300">
+              reset here
+            </Link>{' '}
           </p>
         </div>
         {/* Google Sign in */}

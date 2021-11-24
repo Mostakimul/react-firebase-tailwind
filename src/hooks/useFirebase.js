@@ -3,6 +3,7 @@ import {
   getAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -17,6 +18,7 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [authError, setAuthError] = useState('');
+  const [isReset, setIsReset] = useState(false);
 
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
@@ -108,6 +110,23 @@ const useFirebase = () => {
   };
 
   /**
+   * reset password
+   */
+  const resetPass = (email) => {
+    setIsLoading(true);
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        setIsReset(true);
+      })
+      .catch((error) => {
+        setAuthError(error.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  /**
    * user observer
    */
   useEffect(() => {
@@ -128,10 +147,12 @@ const useFirebase = () => {
     user,
     isLoading,
     authError,
+    isReset,
     registerUser,
     loginUser,
     logOut,
     googleRegister,
+    resetPass,
   };
 };
 
