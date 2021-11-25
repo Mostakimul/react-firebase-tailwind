@@ -20,57 +20,6 @@ It will install following packages
 
 It will install necessary packages for tailwind.
 
-1. After Installing swap the scripts:
-
-```diff
--"start": "react-scripts start",
--"build": "react-scripts build",
--"test": "react-scripts test",
-
-+"start": "craco start",
-+"build": "craco build",
-+"test": "craco test",
-```
-
-2. Create a `craco.config.js` in the project root and paste the below code.
-
-```
-module.exports = {
-  style: {
-    postcss: {
-      plugins: [
-        require('tailwindcss'),
-        require('autoprefixer'),
-      ],
-    },
-  },
-}
-```
-
-3. Configure `tailwind.config.js` file
-
-```diff
-module.exports = {
-- purge: [],
-+purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-darkMode: false, // or 'media' or 'class'
-theme: {
-  extend: {},
-},
-variants: {
-  extend: {},
-},
-plugins: [],
-  }
-```
-
-4. Insert the following code into `index.js` file.
-
-```
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
 
 ### `Insert your firebase config by creating .env.local in the root project folder`
 
